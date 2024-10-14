@@ -2,9 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "productservice.fullname" . }}
-  namespace: {{ .Values.namespace }}
   labels:
     {{- include "productservice.labels" . | nindent 4 }}
+  namespace: {{ .Release.Namespace }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
